@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PathBright Learning: Interactive Presentation</title>
+    <title>PathBright Learning: Investment Memorandum</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Professional Indigo & Gradient Accents -->
-    <!-- Application Structure Plan: A single-page, scrollable narrative website designed for presentation. It uses a logical flow, guiding the viewer from the high-level summary to detailed sections on market, solution, strategy, and financials. Scroll-triggered animations and interactive charts are used to maintain engagement and clearly communicate key data points. This format is ideal for a guided presentation, allowing the presenter to control the flow while providing a visually rich experience. -->
+    <!-- Application Structure Plan: A comprehensive, single-page narrative website designed for investor presentations. It follows the logical flow of the investment memorandum, from the high-level thesis to deep dives into market validation, product roadmap, and risk mitigation. Scroll-triggered animations, interactive charts, and dedicated sections for new research (Founder-Fit, Validation, Roadmap, Risks) create a rich, data-driven experience that builds a powerful investment case. -->
     <!-- Visualization & Content Choices: 
-        - Market Size: Goal: Inform/Compare. Method: Animated Doughnut Chart (Chart.js). Interaction: Hover for details. Justification: Effectively visualizes the TAM/SAM/SOM structure in a modern, digestible format.
+        - Market Size: Goal: Inform/Compare. Method: Animated Doughnut Chart (Chart.js). Interaction: Hover for details. Justification: Effectively visualizes the TAM/SAM/SOM structure.
         - Use of Funds: Goal: Inform. Method: Animated Pie Chart (Chart.js). Interaction: Hover for percentages. Justification: Provides a clear, transparent breakdown of the funding ask.
-        - The PathBright Method: Goal: Explain/Organize. Method: Custom HTML/CSS step-by-step visual. Interaction: None (scroll-animated). Justification: Clearly illustrates the proprietary learning loop in a sequential, easy-to-follow manner.
+        - Roadmap & Risk Register: Goal: Organize/Inform. Method: Styled HTML Tables. Interaction: None (scroll-animated). Justification: Presents detailed, multi-phase information in a structured, professional format that is easy for investors to scan.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -77,12 +77,6 @@
             max-width: 800px;
             margin: 0 auto 5rem auto;
         }
-        .chart-container {
-            position: relative;
-            margin: auto;
-            height: 350px;
-            max-width: 350px;
-        }
         .fade-in-up {
             opacity: 0;
             transform: translateY(30px);
@@ -106,11 +100,12 @@
             <div class="text-2xl font-extrabold">
                 PathBright<span class="text-[var(--accent-blue)]">.</span>
             </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#summary" class="nav-link">Summary</a>
-                <a href="#opportunity" class="nav-link">Opportunity</a>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#summary" class="nav-link">Thesis</a>
+                <a href="#market" class="nav-link">Market</a>
                 <a href="#solution" class="nav-link">Solution</a>
-                <a href="#strategy" class="nav-link">Strategy</a>
+                <a href="#validation" class="nav-link">Validation</a>
+                <a href="#roadmap" class="nav-link">Roadmap</a>
                 <a href="#financials" class="nav-link">Financials</a>
             </div>
         </nav>
@@ -120,39 +115,43 @@
         <section id="hero" class="min-h-screen flex items-center">
             <div class="container mx-auto px-6 text-center">
                 <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-                    A Definitive <span class="gradient-text">Business Plan</span>
+                    An <span class="gradient-text">Investment Memorandum</span>
                 </h1>
                 <p class="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
-                    An interactive presentation of the PathBright Learning investment thesis, market analysis, and strategic roadmap.
+                    The definitive investment thesis, market analysis, and strategic roadmap for PathBright Learning.
                 </p>
             </div>
         </section>
 
         <section id="summary" class="py-24">
             <div class="container mx-auto px-6">
-                <h2 class="section-title fade-in-up">Executive Summary</h2>
-                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">PathBright is poised to capture the U.S. high school equivalency market by providing a superior, mobile-first learning platform. Our core advantage is an exclusive partnership providing a scientifically-validated personalization engine, enabling us to de-risk development and enter the market with a technologically superior product.</p>
-                <div class="grid md:grid-cols-3 gap-8">
+                <h2 class="section-title fade-in-up">The Investment Thesis</h2>
+                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">The investment thesis rests on four key pillars: a market undergoing a structural shift, a technologically superior and defensible product, tangible early market validation, and a clear, disciplined plan for execution.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="glass-card fade-in-up" style="transition-delay: 200ms;">
-                        <h3 class="text-xl font-bold mb-3 text-[var(--accent-blue)]">The Market</h3>
-                        <p class="text-[var(--text-secondary)]">Addressing the ~450,000 annual GED seekers left underserved by the decline of traditional adult education infrastructure.</p>
+                        <h3 class="text-xl font-bold mb-3 text-[var(--accent-blue)]">Market in Transition</h3>
+                        <p class="text-[var(--text-secondary)]">Capturing displaced demand as the decline of in-person adult education creates a vacuum for a superior digital solution.</p>
                     </div>
                     <div class="glass-card fade-in-up" style="transition-delay: 300ms;">
-                        <h3 class="text-xl font-bold mb-3 text-[var(--accent-blue)]">The Method</h3>
-                        <p class="text-[var(--text-secondary)]">A dynamic learning loop of granular diagnostics, multi-modal delivery, and intelligent remediation to ensure mastery and build learner confidence.</p>
+                        <h3 class="text-xl font-bold mb-3 text-[var(--accent-blue)]">Defensible Product</h3>
+                        <p class="text-[var(--text-secondary)]">An exclusive technology partnership provides a scientifically-validated personalization engine, creating a deep competitive moat.</p>
                     </div>
                     <div class="glass-card fade-in-up" style="transition-delay: 400ms;">
-                        <h3 class="text-xl font-bold mb-3 text-[var(--accent-blue)]">The Ask</h3>
-                        <p class="text-[var(--text-secondary)]">Seeking $1.2M in seed funding for an 18-month runway to integrate technology, acquire 10,000 users, and secure 3-5 pilot partnerships.</p>
+                        <h3 class="text-xl font-bold mb-3 text-[var(--accent-blue)]">Early Validation</h3>
+                        <p class="text-[var(--text-secondary)]">Deep qualitative research and a plan to secure institutional LOIs confirm an acute need for our solution.</p>
+                    </div>
+                    <div class="glass-card fade-in-up" style="transition-delay: 500ms;">
+                        <h3 class="text-xl font-bold mb-3 text-[var(--accent-blue)]">Disciplined Execution</h3>
+                        <p class="text-[var(--text-secondary)]">A detailed 18-month roadmap and a capital-efficient, dual-engine GTM strategy ensure a clear path to scale.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="opportunity" class="py-24">
+        <section id="market" class="py-24">
             <div class="container mx-auto px-6">
-                <h2 class="section-title fade-in-up">The Market Opportunity</h2>
-                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">The market represents a stable, multi-million dollar opportunity defined by a structural shift away from traditional learning models, creating a vacuum for a superior digital solution.</p>
+                <h2 class="section-title fade-in-up">The Mandate: A Market in Structural Transition</h2>
+                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">This opportunity is defined by an irreversible shift from analog to digital. PathBright is not creating a new market; we are providing a superior solution to a large, existing market being abandoned by its legacy providers.</p>
                 <div class="grid md:grid-cols-2 gap-16 items-center">
                     <div class="chart-container fade-in-up" style="transition-delay: 200ms;">
                         <canvas id="marketChart"></canvas>
@@ -164,15 +163,11 @@
                         </div>
                         <div class="fade-in-up" style="transition-delay: 400ms;">
                             <h4 class="font-bold text-lg text-[var(--accent-blue)]">Serviceable Addressable Market (SAM)</h4>
-                            <p class="text-[var(--text-secondary)]">~450,000 individuals actively preparing for the GED annually.</p>
+                            <p class="text-[var(--text-secondary)]">~450,000 motivated, needs-driven individuals actively preparing for the GED annually.</p>
                         </div>
                          <div class="fade-in-up" style="transition-delay: 500ms;">
                             <h4 class="font-bold text-lg text-green-400">Serviceable Obtainable Market (SOM)</h4>
                             <p class="text-[var(--text-secondary)]">Initial 3-5 year target of 25,000 users, representing a $3M ARR opportunity.</p>
-                        </div>
-                        <div class="glass-card fade-in-up" style="transition-delay: 600ms;">
-                            <h4 class="font-bold text-lg">Strategic Tailwind</h4>
-                            <p class="text-[var(--text-secondary)]">Employment for adult education teachers is projected to <strong class="text-red-400">decline 13% by 2033</strong>. This institutional contraction shifts demand directly to digital platforms like PathBright.</p>
                         </div>
                     </div>
                 </div>
@@ -181,81 +176,115 @@
 
         <section id="solution" class="py-24">
             <div class="container mx-auto px-6">
-                <h2 class="section-title fade-in-up">The PathBright Solution</h2>
-                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">Our product is an intelligent, adaptive ecosystem. Our foundational strength is an exclusive U.S. licensing agreement with a leading international EdTech research firm, providing a scientifically-validated personalization engine.</p>
-                <div class="max-w-4xl mx-auto">
-                    <div class="relative">
-                        <!-- The connecting line -->
-                        <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-[var(--border-color)]"></div>
-                        <div class="space-y-12">
-                            <div class="flex items-start fade-in-up" style="transition-delay: 200ms;">
-                                <div class="w-8 h-8 rounded-full bg-[var(--accent-blue)] flex-shrink-0 flex items-center justify-center font-bold z-10">1</div>
-                                <div class="ml-8">
-                                    <h4 class="text-xl font-bold mb-2">The Diagnostic Journey</h4>
-                                    <p class="text-[var(--text-secondary)]">The system analyzes not just answers, but "meta-data"—hesitation times, interaction patterns—to build a deep profile of the user's cognitive processing.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start fade-in-up" style="transition-delay: 300ms;">
-                                <div class="w-8 h-8 rounded-full bg-[var(--accent-blue)] flex-shrink-0 flex items-center justify-center font-bold z-10">2</div>
-                                <div class="ml-8">
-                                    <h4 class="text-xl font-bold mb-2">Multi-Modal Lessons</h4>
-                                    <p class="text-[var(--text-secondary)]">Content is delivered in micro-learning "snippets" (video, audio, puzzles, games) reverse-engineered from actual GED exams.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start fade-in-up" style="transition-delay: 400ms;">
-                                <div class="w-8 h-8 rounded-full bg-[var(--accent-blue)] flex-shrink-0 flex items-center justify-center font-bold z-10">3</div>
-                                <div class="ml-8">
-                                    <h4 class="text-xl font-bold mb-2">Intelligent Remediation</h4>
-                                    <p class="text-[var(--text-secondary)]">If a weakness is detected, the system generates a custom path: a targeted game, a podcast, or even a collaborative multiplayer experience.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start fade-in-up" style="transition-delay: 500ms;">
-                                <div class="w-8 h-8 rounded-full bg-[var(--accent-blue)] flex-shrink-0 flex items-center justify-center font-bold z-10">4</div>
-                                <div class="ml-8">
-                                    <h4 class="text-xl font-bold mb-2">Building Cognitive Flexibility</h4>
-                                    <p class="text-[var(--text-secondary)]">The platform strategically encourages users to engage with content formats outside their initial preference to build cognitive resilience.</p>
-                                </div>
-                            </div>
-                        </div>
+                <h2 class="section-title fade-in-up">The Solution: An Intelligent Learning Ecosystem</h2>
+                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">Our platform is engineered to address the specific cognitive and psychological barriers that cause adult learners to fail, powered by a defensible technological advantage.</p>
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="glass-card fade-in-up" style="transition-delay: 200ms;">
+                        <h3 class="text-2xl font-bold mb-4">The Defensible Moat</h3>
+                        <p class="text-[var(--text-secondary)] mb-4">An exclusive U.S. licensing agreement with a leading international EdTech research firm provides a scientifically-validated personalization engine. This partnership grants us:</p>
+                        <ul class="space-y-2 text-[var(--text-secondary)]">
+                            <li><strong class="text-white">A Unique Technical Advantage</strong> that cannot be easily replicated.</li>
+                            <li><strong class="text-white">Reduced R&D Risk</strong> and accelerated time-to-market.</li>
+                            <li><strong class="text-white">Instant Pedagogical Credibility</strong> with learners and institutions.</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card fade-in-up" style="transition-delay: 300ms;">
+                        <h3 class="text-2xl font-bold mb-4">The PathBright Method</h3>
+                        <p class="text-[var(--text-secondary)] mb-4">A continuous, adaptive loop designed to ensure mastery and build confidence:</p>
+                        <ul class="space-y-2 text-[var(--text-secondary)]">
+                            <li><strong class="text-white">1. Granular Diagnostics:</strong> Pinpointing not just what a user doesn't know, but *why*.</li>
+                            <li><strong class="text-white">2. Multi-Modal Delivery:</strong> Providing multiple pathways to mastery (video, game, podcast).</li>
+                            <li><strong class="text-white">3. Intelligent Remediation:</strong> Generating custom paths to overcome specific hurdles.</li>
+                            <li><strong class="text-white">4. Cognitive Flexibility:</strong> Creating more effective, resilient learners.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <section id="strategy" class="py-24">
+
+        <section id="validation" class="py-24">
             <div class="container mx-auto px-6">
-                <h2 class="section-title fade-in-up">Go-to-Market Strategy</h2>
-                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">Our growth is driven by a virtuous cycle: a strong consumer brand drives institutional adoption, and institutional partnerships lend credibility to the consumer offering.</p>
-                <div class="grid md:grid-cols-2 gap-8">
+                <h2 class="section-title fade-in-up">Market Validation: Early Signals of Demand</h2>
+                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">We have mitigated product-market fit risk through deep, qualitative research into our target user base, confirming an acute need for our solution.</p>
+                <div class="grid lg:grid-cols-3 gap-8">
                     <div class="glass-card fade-in-up" style="transition-delay: 200ms;">
-                        <h3 class="text-2xl font-bold mb-3">B2C Acquisition</h3>
-                        <p class="text-[var(--text-secondary)] mb-4">A freemium model will acquire users via targeted digital marketing on TikTok, Instagram, and Facebook. The free tier offers the diagnostic journey to demonstrate platform power and drive conversions.</p>
+                        <h3 class="text-xl font-bold mb-3">Pain Point 1: Math Anxiety</h3>
+                        <p class="text-[var(--text-secondary)]">Analysis of Reddit's r/GED forum reveals profound difficulty with the math section and frustration with existing materials. This validates our need for granular diagnostics and "test-based" micro-lessons.</p>
                     </div>
                     <div class="glass-card fade-in-up" style="transition-delay: 300ms;">
-                        <h3 class="text-2xl font-bold mb-3">B2B Partnerships</h3>
-                        <p class="text-[var(--text-secondary)] mb-4">We will partner with adult education centers, community colleges, and workforce programs, offering a turnkey digital solution via risk-free pilot programs to prove value and secure adoption.</p>
+                        <h3 class="text-xl font-bold mb-3">Pain Point 2: Motivation</h3>
+                        <p class="text-[var(--text-secondary)]">Learners openly discuss struggles with procrastination and self-confidence. This validates our integration of proven gamification mechanics (streaks, points) to foster intrinsic motivation.</p>
                     </div>
+                    <div class="glass-card fade-in-up" style="transition-delay: 400ms;">
+                        <h3 class="text-xl font-bold mb-3">Institutional Interest (LOIs)</h3>
+                        <p class="text-[var(--text-secondary)]">We are actively pursuing non-binding Letters of Intent from a target list of 15 community colleges and workforce boards to provide tangible, third-party validation of our B2B model before fundraising.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title fade-in-up">18-Month Execution Plan</h2>
+                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">Our product roadmap is governed by the MoSCoW framework to ensure disciplined execution and that seed capital is deployed with maximum efficiency to de-risk the business and achieve key milestones.</p>
+                <div class="glass-card overflow-x-auto fade-in-up" style="transition-delay: 200ms;">
+                    <table class="w-full text-left text-sm">
+                        <thead class="border-b border-[var(--border-color)] text-xs uppercase text-[var(--text-secondary)]">
+                            <tr>
+                                <th class="p-4 font-semibold">Phase</th>
+                                <th class="p-4 font-semibold">Timeline</th>
+                                <th class="p-4 font-semibold">Category</th>
+                                <th class="p-4 font-semibold">Key Initiative</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[var(--border-color)]">
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-4 font-bold">1: Foundation</td>
+                                <td class="p-4">Months 1-6</td>
+                                <td class="p-4 font-semibold text-green-400">Must Have</td>
+                                <td class="p-4">Core Platform Integration & GED Math Curriculum Launch</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-4 font-bold">2: Engagement</td>
+                                <td class="p-4">Months 7-12</td>
+                                <td class="p-4 font-semibold text-blue-400">Should Have</td>
+                                <td class="p-4">Social Leaderboards & B2B Admin Dashboard (Pilot Version)</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-4 font-bold">3: Expansion</td>
+                                <td class="p-4">Months 13-18</td>
+                                <td class="p-4 font-semibold text-green-400">Must Have</td>
+                                <td class="p-4">Full GED Curriculum Completion (All 4 Subjects)</td>
+                            </tr>
+                             <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-4 font-bold">Future</td>
+                                <td class="p-4">Post-Seed</td>
+                                <td class="p-4 font-semibold text-gray-400">Won't Have</td>
+                                <td class="p-4">State Accreditation / Direct Credentialing</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
 
         <section id="financials" class="py-24">
             <div class="container mx-auto px-6">
-                <h2 class="section-title fade-in-up">Financials & Vision</h2>
-                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">We are seeking $1.2M in seed funding for an 18-month runway to achieve key milestones, de-risk the business, and position PathBright for a successful Series A fundraise.</p>
+                <h2 class="section-title fade-in-up">Financial Plan & Vision</h2>
+                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">The financial strategy is designed to achieve value-creating milestones within a defined budget, leading to a successful Series A and long-term, venture-scale growth.</p>
                 <div class="grid md:grid-cols-2 gap-16 items-center">
                     <div class="fade-in-up" style="transition-delay: 200ms;">
-                        <h3 class="text-2xl font-bold mb-4 text-center">Use of Funds</h3>
-                        <div class="chart-container">
+                        <h3 class="text-2xl font-bold mb-4 text-center">Funding Ask: $1.2M Seed</h3>
+                        <div class="chart-container" style="height: 350px; max-width: 350px;">
                             <canvas id="fundingChart"></canvas>
                         </div>
                     </div>
                     <div class="glass-card fade-in-up" style="transition-delay: 300ms;">
-                        <h3 class="text-2xl font-bold mb-6">Long-Term Vision</h3>
+                        <h3 class="text-2xl font-bold mb-6">The Long-Term Vision</h3>
                         <div class="space-y-4">
-                            <p><strong class="text-[var(--accent-blue)]">Phase 1 (Years 0-2):</strong> Dominate the GED Market.</p>
-                            <p><strong class="text-[var(--accent-blue)]">Phase 2 (Years 2-4):</strong> Expand to adjacent credentials (HiSET, vocational certifications).</p>
-                            <p><strong class="text-[var(--accent-blue)]">Phase 3 (Years 5+):</strong> Achieve accreditation to become a full-stack credentialing platform, awarding diplomas directly.</p>
+                            <p><strong class="text-[var(--accent-blue)]">Phase 1 (Seed):</strong> Dominate the GED Market.</p>
+                            <p><strong class="text-[var(--accent-blue)]">Phase 2 (Series A):</strong> Expand to adjacent credentials (HiSET, vocational certifications).</p>
+                            <p><strong class="text-[var(--accent-blue)]">Phase 3 (Series B+):</strong> Achieve accreditation to become a full-stack credentialing platform, awarding diplomas directly and capturing the full value chain.</p>
                         </div>
                     </div>
                 </div>
@@ -313,7 +342,7 @@
                 new Chart(fundingCtx, {
                     type: 'pie',
                     data: {
-                        labels: ['Platform & Localization (35%)', 'Content & Pedagogy (20%)', 'Marketing & Sales (30%)', 'Partnership & G&A (15%)'],
+                        labels: ['Platform Integration & Localization (35%)', 'Content & Pedagogy (20%)', 'Marketing & Sales (30%)', 'Partnership & G&A (15%)'],
                         datasets: [{
                             data: [35, 20, 30, 15],
                             backgroundColor: ['#3B82F6', '#8B5CF6', '#F59E0B', '#6B7280'],
