@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PathBright Learning: Interactive Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Professional Indigo & Gradient Accents -->
+    <!-- Application Structure Plan: A single-page, scrollable narrative website designed for presentation. It uses a logical flow, guiding the viewer from the high-level summary to detailed sections on market, solution, strategy, and financials. Scroll-triggered animations and interactive charts are used to maintain engagement and clearly communicate key data points. This format is ideal for a guided presentation, allowing the presenter to control the flow while providing a visually rich experience. -->
+    <!-- Visualization & Content Choices: 
+        - Market Size: Goal: Inform/Compare. Method: Animated Doughnut Chart (Chart.js). Interaction: Hover for details. Justification: Effectively visualizes the TAM/SAM/SOM structure in a modern, digestible format.
+        - Use of Funds: Goal: Inform. Method: Animated Pie Chart (Chart.js). Interaction: Hover for percentages. Justification: Provides a clear, transparent breakdown of the funding ask.
+        - The PathBright Method: Goal: Explain/Organize. Method: Custom HTML/CSS step-by-step visual. Interaction: None (scroll-animated). Justification: Clearly illustrates the proprietary learning loop in a sequential, easy-to-follow manner.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        :root {
+            --background: #111827; /* Dark Indigo */
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --accent-blue: #3B82F6;
+            --accent-purple: #8B5CF6;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+        .nav-link.active::after, .nav-link:hover::after {
+            width: 100%;
+        }
+        .glass-card {
+            background: rgba(31, 41, 55, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 5rem auto;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 350px;
+            max-width: 350px;
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.6, 0.01, 0.05, 0.95), transform 0.8s cubic-bezier(0.6, 0.01, 0.05, 0.95);
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-transparent backdrop-blur-sm sticky top-0 z-50 border-b border-[var(--border-color)]">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-extrabold">
+                PathBright<span class="text-[var(--accent-blue)]">.</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#summary" class="nav-link">Summary</a>
+                <a href="#opportunity" class="nav-link">Opportunity</a>
+                <a href="#solution" class="nav-link">Solution</a>
+                <a href="#strategy" class="nav-link">Strategy</a>
+                <a href="#financials" class="nav-link">Financials</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="min-h-screen flex items-center">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                    A Definitive <span class="gradient-text">Business Plan</span>
+                </h1>
+                <p class="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
+                    An interactive presentation of the PathBright Learning investment thesis, market analysis, and strategic roadmap.
+                </p>
+            </div>
+        </section>
+
+        <section id="summary" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title fade-in-up">Executive Summary</h2>
+                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">PathBright is poised to capture the U.S. high school equivalency market by providing a superior, mobile-first learning platform. Our core advantage is an exclusive partnership providing a scientifically-validated personalization engine, enabling us to de-risk development and enter the market with a technologically superior product.</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="glass-card fade-in-up" style="transition-delay: 200ms;">
+                        <h3 class="text-xl font-bold mb-3 text-[var(--accent-blue)]">The Market</h3>
+                        <p class="text-[var(--text-secondary)]">Addressing the ~450,000 annual GED seekers left underserved by the decline of traditional adult education infrastructure.</p>
+                    </div>
+                    <div class="glass-card fade-in-up" style="transition-delay: 300ms;">
+                        <h3 class="text-xl font-bold mb-3 text-[var(--accent-blue)]">The Method</h3>
+                        <p class="text-[var(--text-secondary)]">A dynamic learning loop of granular diagnostics, multi-modal delivery, and intelligent remediation to ensure mastery and build learner confidence.</p>
+                    </div>
+                    <div class="glass-card fade-in-up" style="transition-delay: 400ms;">
+                        <h3 class="text-xl font-bold mb-3 text-[var(--accent-blue)]">The Ask</h3>
+                        <p class="text-[var(--text-secondary)]">Seeking $1.2M in seed funding for an 18-month runway to integrate technology, acquire 10,000 users, and secure 3-5 pilot partnerships.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="opportunity" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title fade-in-up">The Market Opportunity</h2>
+                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">The market represents a stable, multi-million dollar opportunity defined by a structural shift away from traditional learning models, creating a vacuum for a superior digital solution.</p>
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="chart-container fade-in-up" style="transition-delay: 200ms;">
+                        <canvas id="marketChart"></canvas>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="fade-in-up" style="transition-delay: 300ms;">
+                            <h4 class="font-bold text-lg text-[var(--accent-purple)]">Total Addressable Market (TAM)</h4>
+                            <p class="text-[var(--text-secondary)]">>39 million U.S. adults without a high school credential.</p>
+                        </div>
+                        <div class="fade-in-up" style="transition-delay: 400ms;">
+                            <h4 class="font-bold text-lg text-[var(--accent-blue)]">Serviceable Addressable Market (SAM)</h4>
+                            <p class="text-[var(--text-secondary)]">~450,000 individuals actively preparing for the GED annually.</p>
+                        </div>
+                         <div class="fade-in-up" style="transition-delay: 500ms;">
+                            <h4 class="font-bold text-lg text-green-400">Serviceable Obtainable Market (SOM)</h4>
+                            <p class="text-[var(--text-secondary)]">Initial 3-5 year target of 25,000 users, representing a $3M ARR opportunity.</p>
+                        </div>
+                        <div class="glass-card fade-in-up" style="transition-delay: 600ms;">
+                            <h4 class="font-bold text-lg">Strategic Tailwind</h4>
+                            <p class="text-[var(--text-secondary)]">Employment for adult education teachers is projected to <strong class="text-red-400">decline 13% by 2033</strong>. This institutional contraction shifts demand directly to digital platforms like PathBright.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title fade-in-up">The PathBright Solution</h2>
+                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">Our product is an intelligent, adaptive ecosystem. Our foundational strength is an exclusive U.S. licensing agreement with a leading international EdTech research firm, providing a scientifically-validated personalization engine.</p>
+                <div class="max-w-4xl mx-auto">
+                    <div class="relative">
+                        <!-- The connecting line -->
+                        <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-[var(--border-color)]"></div>
+                        <div class="space-y-12">
+                            <div class="flex items-start fade-in-up" style="transition-delay: 200ms;">
+                                <div class="w-8 h-8 rounded-full bg-[var(--accent-blue)] flex-shrink-0 flex items-center justify-center font-bold z-10">1</div>
+                                <div class="ml-8">
+                                    <h4 class="text-xl font-bold mb-2">The Diagnostic Journey</h4>
+                                    <p class="text-[var(--text-secondary)]">The system analyzes not just answers, but "meta-data"—hesitation times, interaction patterns—to build a deep profile of the user's cognitive processing.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start fade-in-up" style="transition-delay: 300ms;">
+                                <div class="w-8 h-8 rounded-full bg-[var(--accent-blue)] flex-shrink-0 flex items-center justify-center font-bold z-10">2</div>
+                                <div class="ml-8">
+                                    <h4 class="text-xl font-bold mb-2">Multi-Modal Lessons</h4>
+                                    <p class="text-[var(--text-secondary)]">Content is delivered in micro-learning "snippets" (video, audio, puzzles, games) reverse-engineered from actual GED exams.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start fade-in-up" style="transition-delay: 400ms;">
+                                <div class="w-8 h-8 rounded-full bg-[var(--accent-blue)] flex-shrink-0 flex items-center justify-center font-bold z-10">3</div>
+                                <div class="ml-8">
+                                    <h4 class="text-xl font-bold mb-2">Intelligent Remediation</h4>
+                                    <p class="text-[var(--text-secondary)]">If a weakness is detected, the system generates a custom path: a targeted game, a podcast, or even a collaborative multiplayer experience.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start fade-in-up" style="transition-delay: 500ms;">
+                                <div class="w-8 h-8 rounded-full bg-[var(--accent-blue)] flex-shrink-0 flex items-center justify-center font-bold z-10">4</div>
+                                <div class="ml-8">
+                                    <h4 class="text-xl font-bold mb-2">Building Cognitive Flexibility</h4>
+                                    <p class="text-[var(--text-secondary)]">The platform strategically encourages users to engage with content formats outside their initial preference to build cognitive resilience.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="strategy" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title fade-in-up">Go-to-Market Strategy</h2>
+                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">Our growth is driven by a virtuous cycle: a strong consumer brand drives institutional adoption, and institutional partnerships lend credibility to the consumer offering.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="glass-card fade-in-up" style="transition-delay: 200ms;">
+                        <h3 class="text-2xl font-bold mb-3">B2C Acquisition</h3>
+                        <p class="text-[var(--text-secondary)] mb-4">A freemium model will acquire users via targeted digital marketing on TikTok, Instagram, and Facebook. The free tier offers the diagnostic journey to demonstrate platform power and drive conversions.</p>
+                    </div>
+                    <div class="glass-card fade-in-up" style="transition-delay: 300ms;">
+                        <h3 class="text-2xl font-bold mb-3">B2B Partnerships</h3>
+                        <p class="text-[var(--text-secondary)] mb-4">We will partner with adult education centers, community colleges, and workforce programs, offering a turnkey digital solution via risk-free pilot programs to prove value and secure adoption.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="financials" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title fade-in-up">Financials & Vision</h2>
+                <p class="section-subtitle fade-in-up" style="transition-delay: 100ms;">We are seeking $1.2M in seed funding for an 18-month runway to achieve key milestones, de-risk the business, and position PathBright for a successful Series A fundraise.</p>
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="fade-in-up" style="transition-delay: 200ms;">
+                        <h3 class="text-2xl font-bold mb-4 text-center">Use of Funds</h3>
+                        <div class="chart-container">
+                            <canvas id="fundingChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="glass-card fade-in-up" style="transition-delay: 300ms;">
+                        <h3 class="text-2xl font-bold mb-6">Long-Term Vision</h3>
+                        <div class="space-y-4">
+                            <p><strong class="text-[var(--accent-blue)]">Phase 1 (Years 0-2):</strong> Dominate the GED Market.</p>
+                            <p><strong class="text-[var(--accent-blue)]">Phase 2 (Years 2-4):</strong> Expand to adjacent credentials (HiSET, vocational certifications).</p>
+                            <p><strong class="text-[var(--accent-blue)]">Phase 3 (Years 5+):</strong> Achieve accreditation to become a full-stack credentialing platform, awarding diplomas directly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-[var(--border-color)] mt-20">
+        <div class="container mx-auto px-6 py-8 text-center text-[var(--text-secondary)]">
+            <p>&copy; 2025 PathBright Learning. The Adaptive Pathway to Opportunity.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Chart.defaults.color = 'rgba(249, 250, 251, 0.8)';
+            Chart.defaults.borderColor = 'rgba(249, 250, 251, 0.1)';
+            Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+
+            const marketCtx = document.getElementById('marketChart')?.getContext('2d');
+            if (marketCtx) {
+                new Chart(marketCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['TAM (>39M)', 'SAM (~450k)', 'SOM (25k)'],
+                        datasets: [{
+                            data: [39000000, 450000, 25000],
+                            backgroundColor: ['#8B5CF6', '#3B82F6', '#10B981'],
+                            borderColor: '#111827',
+                            borderWidth: 5,
+                            hoverOffset: 15
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        cutout: '70%',
+                        plugins: { 
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: 'rgba(0,0,0,0.7)',
+                                titleFont: { weight: 'bold' },
+                                bodyFont: { size: 14 },
+                                callbacks: {
+                                    label: (context) => `${context.label}: ${new Intl.NumberFormat('en-US').format(context.parsed)}`
+                                }
+                            }
+                        },
+                        animation: { animateScale: true, animateRotate: true }
+                    }
+                });
+            }
+
+            const fundingCtx = document.getElementById('fundingChart')?.getContext('2d');
+            if (fundingCtx) {
+                new Chart(fundingCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Platform & Localization (35%)', 'Content & Pedagogy (20%)', 'Marketing & Sales (30%)', 'Partnership & G&A (15%)'],
+                        datasets: [{
+                            data: [35, 20, 30, 15],
+                            backgroundColor: ['#3B82F6', '#8B5CF6', '#F59E0B', '#6B7280'],
+                            borderColor: '#111827',
+                            borderWidth: 5,
+                            hoverOffset: 15
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: { 
+                            legend: { position: 'bottom', labels: { padding: 20 } },
+                            tooltip: {
+                                backgroundColor: 'rgba(0,0,0,0.7)',
+                                callbacks: {
+                                    label: (context) => `${context.label}: ${context.raw}%`
+                                }
+                            }
+                        },
+                        animation: { animateScale: true }
+                    }
+                });
+            }
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section[id]');
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href').substring(1) === id);
+                        });
+                    }
+                });
+            }, { rootMargin: '-40% 0px -60% 0px' });
+            sections.forEach(section => navObserver.observe(section));
+        });
+    </script>
+</body>
+</html>
